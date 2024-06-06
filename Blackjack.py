@@ -21,9 +21,63 @@ class Deck:
                 self.deck.append([card,values[value]]) #ive chosen to store the cards in a 2d array, each block having the card name paired with its value
                 value += 1
     
+
+    def shuffle(self):
+        random.shuffle(self.deck)
+
+
     def show_deck(self):
         print(self.deck)
     
 
+    def deal_card(self):
+        card = self.deck.pop()
+        return card
+
+
+
+class Chips:
+
+    def __init__(self):
+        self.chips = 100 #starting chips
+        self.bet = 0
+    
+
+    def win(self):
+        pass
+
+    def lose(self):
+        pass
+
+    def push(self):
+        pass
+
+
+
+class Hand:
+
+    def __init__(self):
+        self.hand = []
+        self.value = 0
+    
+    def hit(self,Deck):
+        card = Deck.deal_card()
+        self.hand.append(card[0])
+        self.value += card[1]
+
+        return self.hand,self.value
+    
+    def empty(self):
+        self.hand = []
+        self.value = 0
+        
+
+
+
 Deck = Deck(suits,ranks,values)
-Deck.show_deck()
+player_hand = Hand()
+
+Deck.shuffle()
+
+print(player_hand.hit(Deck))
+print(player_hand.hit(Deck))
