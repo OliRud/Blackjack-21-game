@@ -96,7 +96,7 @@ class Hand:
 
 #functions
 
-def bet(): #processing the bet
+def process_bet(): #processing the bet
 
     while True:
         try:
@@ -123,7 +123,7 @@ def endgame(Dealer_hand,Player_hand): #calculates the winner
         Chips.lose()
     elif Dealer_hand.value < Player_hand.value:
         Chips.win()
-    elif Dealer_hand.Value == Player_hand.value:
+    elif Dealer_hand.value == Player_hand.value:
         Chips.push()
     
     print("\nCurrent Chips:",Chips.chips)
@@ -199,6 +199,8 @@ print("\nChips:",Chips.chips)
 #main loop
 while True:
 
+    turn = "player"
+
     Deck.__init__(suits,ranks,values) #replenish the deck every new game
 
     Player_hand.empty() #empty the hands every new game
@@ -207,7 +209,7 @@ while True:
     Deck.shuffle() #shuffle the deck every new game
 
     #get the bet and deduct the bet from the chips
-    bet = bet()
+    bet = process_bet()
     Chips.take_bet(bet)
 
     #add 2 cards automatically to both hands
